@@ -1,2 +1,2 @@
 # bitscoop.github.io
-BitScoop Repo Documentation Home
+BitScoop Open Source Libraries Documentation

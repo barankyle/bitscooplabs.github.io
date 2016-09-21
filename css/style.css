@@ -1,0 +1,240 @@
+body {
+    height: 100%;
+    background: #F1F1F1;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin: 0;
+    overflow-y: scroll;
+}
+/* Heder */
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    padding: 0 1em;
+    background: #2C3136;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #fff;
+    box-shadow: 0px 0px 55px -9px rgba(0, 0, 0, 1);
+}
+
+.logo {
+    height: 50px;
+}
+
+.titles {
+  margin: 0.25em auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em 1em;
+}
+
+.title {
+    font-size: 1.35em;
+}
+
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.link {
+  color: #eee;
+  padding: 0 0.5em;
+}
+
+/* Controls
+---------------------------------------------------------------------- */
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control {
+    position: relative;
+    display: inline-block;
+    width: 140px;
+    background: #3E454C;
+    cursor: pointer;
+    color: white;
+    transition: background 450ms;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    margin: 0.5rem;
+    box-shadow: 0px 0px 15px 0 rgba(0,0,0,0.3);
+}
+
+.control span {
+  color: #fff
+}
+
+.control:first-child {
+    background-color: #eee;
+}
+
+.control:first-child span {
+    color: #000;
+}
+
+.control:hover {
+    background: #777;
+}
+
+.mixitup-control-active {
+  text-shadow: 0px 0px 30px currentColor;
+  background-color: #666;
+}
+
+.control.green {
+    color: #28EA53;
+}
+
+.control.blue {
+    color: #5ecdde;
+}
+
+.control.pink {
+    color: #d595aa;
+}
+
+.control.orange {
+    color: #FF932B;
+}
+
+.control.yellow {
+    color: #FFBD2B;
+}
+
+.control.navy {
+    color: #3C63E3;
+}
+
+.control.red {
+    color: #FF3F2B;
+}
+
+.control.white {
+    color: #ccc;
+}
+/* Container
+---------------------------------------------------------------------- */
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    text-align: justify;
+    padding: 0;
+}
+
+.mix:first-child {
+    background-color: #2ac1de;
+    color: #ccc !important;
+}
+
+
+.mix:first-child .content {
+    color: #fff !important;
+    font-size: 1.1;
+}
+
+/* Target Elements
+---------------------------------------------------------------------- */
+
+.mix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    width: 120px;
+    color: #000;
+    background: #fff;
+    border: 1px solid currentColor;
+    border-radius: 1px;
+    margin: 0.5rem;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
+}
+
+.mix.green {
+    color: #28EA53;
+}
+
+.mix.pink {
+    color: #d595aa;
+}
+
+.mix.blue {
+    color: #2AC1DE;
+}
+
+.mix.orange {
+    color: #FF932B;
+}
+
+.mix.yellow {
+    color: #FFBD2B;
+}
+
+.mix.navy {
+    color: #3C63E3;
+}
+
+.mix.red {
+    color: #FF3F2B;
+}
+
+.content {
+    min-height: 120px;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+}
+
+.content span {
+    margin: 0.5em 0.5em 0 0.5em;
+    text-align: center;
+}
+/* Grid Breakpoints
+---------------------------------------------------------------------- */
+/* 2 Columns */
+/*.mix {
+    width: calc(100%/2 - (((2 - 1) * 1rem) / 2));
+}*/
+/* 3 Columns */
+/*@media screen and (min-width: 541px) {
+    .mix {
+        width: calc(100%/3 - (((3 - 1) * 1rem) / 3));
+    }
+}*/
+/* 4 Columns */
+/*@media screen and (min-width: 961px) {
+    .mix {
+        width: calc(100%/4 - (((4 - 1) * 1rem) / 4));
+    }
+}*/
+/* 5 Columns */
+/*@media screen and (min-width: 1281px) {
+    .mix {
+        width: calc(100%/5 - (((5 - 1) * 1rem) / 5));
+    }
+}*/
