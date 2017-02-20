@@ -1,5 +1,5 @@
 var categoryList = {
-	"datasets": "navy",
+	"datasets": "purple",
 	"development": "blue",
 	"social": "green",
 	"entertainment": "pink",
@@ -430,7 +430,7 @@ var providerList = [
 		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/blizzard"
 	},
 	{
-		"name": "Worlfram Alpha",
+		"name": "Wolfram Alpha",
 		"category": "datasets",
 		"icon": "fa-search",
 		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/wolfram_alpha"
@@ -455,7 +455,7 @@ var providerList = [
 	}
 ];
 
-var $container = $('#container');
+var $container = $('#map-container');
 
 providerList.forEach(function(element) {
 	$container.append(
@@ -474,10 +474,15 @@ $(".mix").click(
 		window.location = $(this).attr("data-link");
 	});
 
-var mixer = mixitup($container, {
-	"animation": {
-		"duration": 250,
-		"nudge": true,
-		"effects": "fade scale(0.68)"
+	var mixer = mixitup($container, {
+		"animation": {
+			"duration": 250,
+			"nudge": true,
+			"effects": "fade scale(0.68)"
+		},
+	callbacks: {
+			onMixClick: function(state, originalEvent) {
+					 mixer.filter($(originalEvent.target).data("toggle"));
+			}
 	}
-});
+	});

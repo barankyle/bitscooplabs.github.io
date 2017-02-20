@@ -15,15 +15,15 @@ body {
 }
 
 .header {
-    padding: 0 1em;
-    background: #2C3136;
+    padding: 0 1em 0.5em 1em;
+    background: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    color: #fff;
-    box-shadow: 0px 0px 55px -9px rgba(0, 0, 0, 1);
+    color: #222;
+    box-shadow: 0px 0px 25px -9px rgba(0, 0, 0, 1);
 }
 
 .logo {
@@ -50,115 +50,106 @@ body {
 }
 
 .link {
-  color: #eee;
+  color: #333;
   padding: 0 0.5em;
 }
 
 /* Controls
----------------------------------------------------------------------- */
+  ---------------------------------------------------------------------- */
 
-.controls {
+  .controls {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-}
+  }
 
-.control {
+  .control {
     position: relative;
-    display: inline-block;
+    display: flex;
     width: 140px;
-    background: #3E454C;
     cursor: pointer;
-    color: white;
     transition: background 450ms;
     padding: 0.5rem;
     font-size: 1rem;
-    border: 1px solid currentColor;
+    background: #fff;
+    border-bottom: 2px solid currentColor;
     border-radius: 1px;
     margin: 0.5rem;
-    box-shadow: 0px 0px 15px 0 rgba(0,0,0,0.3);
-}
+    justify-content: center;
+    text-transform: uppercase;
+  }
 
-.control span {
-  color: #fff
-}
+  .control span {
+    color: #222;
+  }
 
-.control:first-child {
-    background-color: #eee;
-}
+  .control:hover {
+    background: #ccc;
+    color: #fff;
+  }
 
-.control:first-child span {
-    color: #000;
-}
+  .mixitup-control-active {
+    background-color: #ddd;
+  }
 
-.control:hover {
-    background: #777;
-}
+  .control.green {
+    color: #6CC644;
+  }
 
-.mixitup-control-active {
-  text-shadow: 0px 0px 30px currentColor;
-  background-color: #666;
-}
-
-.control.green {
-    color: #28EA53;
-}
-
-.control.blue {
+  .control.blue {
     color: #5ecdde;
-}
+  }
 
-.control.pink {
+  .control.pink {
     color: #d595aa;
-}
+  }
 
-.control.orange {
-    color: #FF932B;
-}
+  .control.orange {
+    color: #FF9933;
+  }
 
-.control.yellow {
-    color: #FFBD2B;
-}
+  .control.yellow {
+    color: #E5E500;
+  }
 
-.control.navy {
-    color: #3C63E3;
-}
+  .control.purple {
+    color: #6E5494;
+  }
 
-.control.red {
-    color: #FF3F2B;
-}
+  .control.red {
+    color: #BD2C00;
+  }
 
-.control.white {
+  .control.white {
     color: #ccc;
-}
-/* Container
----------------------------------------------------------------------- */
+  }
+  /* Container
+  ---------------------------------------------------------------------- */
 
-#container {
+  #map-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 1rem;
     text-align: justify;
-    padding: 0;
-}
+  }
 
-.mix:first-child {
+  .mix:first-child {
     background-color: #2ac1de;
     color: #ccc !important;
-}
+  }
 
 
-.mix:first-child .content {
+  .mix:first-child .content {
     color: #fff !important;
     font-size: 1.1;
-}
+  }
 
-/* Target Elements
----------------------------------------------------------------------- */
+  /* Target Elements
+  ---------------------------------------------------------------------- */
 
-.mix {
+  .mix {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,41 +157,48 @@ body {
     width: 120px;
     color: #000;
     background: #fff;
-    border: 1px solid currentColor;
+    transition: background 450ms;
+    border: 2px solid currentColor;
     border-radius: 1px;
     margin: 0.5rem;
+    cursor: pointer;
     box-shadow: 0 0 7px 0 rgba(0,0,0,.1);
-}
+  }
 
-.mix.green {
-    color: #28EA53;
-}
+  .mix:hover {
+    background: #eee;
+    color: #fff;
+  }
 
-.mix.pink {
+  .mix.green {
+    color: #6CC644;
+  }
+
+  .mix.pink {
     color: #d595aa;
-}
+  }
 
-.mix.blue {
+  .mix.blue {
     color: #2AC1DE;
-}
+  }
 
-.mix.orange {
-    color: #FF932B;
-}
+  .mix.orange {
+    color: #FF9933;
+  }
 
-.mix.yellow {
-    color: #FFBD2B;
-}
+  .mix.yellow {
+    color: #E5E500;
+  }
 
-.mix.navy {
-    color: #3C63E3;
-}
+  .mix.purple {
+    color: #6E5494;
+  }
 
-.mix.red {
-    color: #FF3F2B;
-}
+  .mix.red {
+    color: #BD2C00;
+  }
 
-.content {
+  .content {
     min-height: 120px;
     min-width: 120px;
     display: flex;
@@ -208,33 +206,9 @@ body {
     align-items: center;
     justify-content: center;
     color: #444;
-}
+  }
 
-.content span {
+  .content span {
     margin: 0.5em 0.5em 0 0.5em;
     text-align: center;
-}
-/* Grid Breakpoints
----------------------------------------------------------------------- */
-/* 2 Columns */
-/*.mix {
-    width: calc(100%/2 - (((2 - 1) * 1rem) / 2));
-}*/
-/* 3 Columns */
-/*@media screen and (min-width: 541px) {
-    .mix {
-        width: calc(100%/3 - (((3 - 1) * 1rem) / 3));
-    }
-}*/
-/* 4 Columns */
-/*@media screen and (min-width: 961px) {
-    .mix {
-        width: calc(100%/4 - (((4 - 1) * 1rem) / 4));
-    }
-}*/
-/* 5 Columns */
-/*@media screen and (min-width: 1281px) {
-    .mix {
-        width: calc(100%/5 - (((5 - 1) * 1rem) / 5));
-    }
-}*/
+  }
