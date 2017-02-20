@@ -34,6 +34,12 @@ var providerList = [
 		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/apigee"
 	},
 	{
+		"name": "APIMatic",
+		"category": "development",
+		"icon": "fa-exchange",
+		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/apimatic"
+	},
+	{
 		"name": "Bitly",
 		"category": "utilites",
 		"icon": "fa-link",
