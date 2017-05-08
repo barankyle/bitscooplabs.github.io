@@ -1,3 +1,5 @@
+// COMMUNITY MAPS
+
 var categoryList = {
 	"datasets": "purple",
 	"development": "blue",
@@ -492,3 +494,47 @@ $(".mix").click(
 			}
 	}
 	});
+
+// API DATABASE
+
+var rootDBUrl = 'https://api.apis.guru/v2/';
+var urlTemplate = '{swaggerJson}';
+
+function renderBitScoopButton(specSwaggerJson){
+	return	'<a href=https://bitscoop.com/maps/create?format=swagger2json&url=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
+}
+
+function renderItem(specName, specSwaggerJson, specDesc, specImg, specImgBackgroundColor) {
+	var retVal = '<div class="db-item"><div class="item-name">'+ specName +'</div><div class="whitebox"><div class="logo-container" style="background-color:' + specImgBackgroundColor +'"><img class="db-logo" src="' + specImg + '"></img></div>'+ renderBitScoopButton(specSwaggerJson) + '</div>';
+	retVal += '<div class="item-desc">' + specDesc + '</div></div>';
+
+	return retVal;
+}
+
+$.get(rootDBUrl + 'list.json', function(data){
+	var specName, specSwaggerJson, specDesc, specImg;
+	var renderedList = '';
+	var count = 0;
+	var apiVersion;
+
+	for(var apiId in data){
+		for (var version in data[apiId].versions) {
+
+			apiVersion = data[apiId].versions[version];
+
+			specName = apiVersion.info.title;
+			specSwaggerJson = apiVersion.swaggerUrl;
+			specDesc = apiVersion.info.description || 'No description';
+
+			if (apiVersion.info['x-logo']) {
+				specImg = apiVersion.info['x-logo'].url;
+				specImgBackgroundColor = apiVersion.info['x-logo'].backgroundColor;
+			}
+
+			renderedList += renderItem(specName, specSwaggerJson, specDesc, specImg, specImgBackgroundColor);
+			count++;
+		}
+	}
+	$('#database-list').html(renderedList);
+	$('#api-count').html(count);
+});
