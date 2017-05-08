@@ -504,15 +504,15 @@ function renderBitScoopButton(specSwaggerJson){
 	return	'<a href=https://bitscoop.com/maps/create?format=swagger2json&url=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
 }
 
-function renderItem(specName, specSwaggerJson, specDesc, specImg, specImgBackgroundColor) {
+function renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor) {
 	var retVal = '<div class="db-item"><div class="item-name">'+ specName +'</div><div class="whitebox"><div class="logo-container" style="background-color:' + specImgBackgroundColor +'"><img class="db-logo" src="' + specImg + '"></img></div>'+ renderBitScoopButton(specSwaggerJson) + '</div>';
-	retVal += '<div class="item-desc">' + specDesc + '</div></div>';
+	retVal += '<div>' + specVersion + '</div><div class="item-desc">' + specDesc + '</div></div>';
 
 	return retVal;
 }
 
 $.get(rootDBUrl + 'list.json', function(data){
-	var specName, specSwaggerJson, specDesc, specImg;
+	var specName, specSwaggerJson, specDesc, specImg, specVersion;
 	var renderedList = '';
 	var count = 0;
 	var apiVersion;
@@ -525,13 +525,14 @@ $.get(rootDBUrl + 'list.json', function(data){
 			specName = apiVersion.info.title;
 			specSwaggerJson = apiVersion.swaggerUrl;
 			specDesc = apiVersion.info.description || 'No description';
+			specVersion = apiVersion.info.version || '';
 
 			if (apiVersion.info['x-logo']) {
 				specImg = apiVersion.info['x-logo'].url;
 				specImgBackgroundColor = apiVersion.info['x-logo'].backgroundColor;
 			}
 
-			renderedList += renderItem(specName, specSwaggerJson, specDesc, specImg, specImgBackgroundColor);
+			renderedList += renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor);
 			count++;
 		}
 	}

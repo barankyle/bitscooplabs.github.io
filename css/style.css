@@ -7,6 +7,10 @@ body {
   overflow-y: scroll;
 }
 
+a {
+  color: #2ac1de;
+}
+
 /* Heder */
 
 .brand {
@@ -328,12 +332,12 @@ label .fa {
   margin: 0.25em;
   padding: 0.75em;
   background: #fff;
-  height: 180px;
   justify-content: space-between;
 }
 
 .logo-container {
   margin: 0.25em;
+  padding: 0.75em;
   border: 3px solid #fff;
   border-radius: 3px;
   max-width: 80%;
@@ -349,9 +353,10 @@ label .fa {
   font-size: 1.5em;
   font-weight: 500;
   color: 111;
-  padding: 1em;
   height: 60px;
   text-align: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .db-item .item-desc {
@@ -361,3 +366,6 @@ label .fa {
   max-height: 180px;
   max-width: 100%;
 }
+
+/* Content
+    ---------------------------------------------------------------------- */
