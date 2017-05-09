@@ -15,7 +15,7 @@ var providerList = [
 		"name": "Create a Map",
 		"category": "development",
 		"icon": "fa-plus",
-		"link": "https://developer.bitscoop.com/learn/providers"
+		"link": "https://bitscoop.com/learn/maps"
 	},
 	{
 		"name": "500px",
@@ -36,7 +36,7 @@ var providerList = [
 		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/apigee"
 	},
 	{
-		"name": "APIMatic",
+		"name": "APIMATIC",
 		"category": "development",
 		"icon": "fa-exchange",
 		"link": "https://github.com/bitscooplabs/provider-maps/tree/master/apimatic"
@@ -501,12 +501,12 @@ var rootDBUrl = 'https://api.apis.guru/v2/';
 var urlTemplate = '{swaggerJson}';
 
 function renderBitScoopButton(specSwaggerJson){
-	return	'<a href=https://bitscoop.com/maps/create?format=swagger2json&url=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
+	return	'<a target="_blank" href=https://bitscoop.com/maps/create?format=swagger2json&source=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
 }
 
 function renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor) {
 	var retVal = '<div class="db-item"><div class="item-name">'+ specName +'</div><div class="whitebox"><div class="logo-container" style="background-color:' + specImgBackgroundColor +'"><img class="db-logo" src="' + specImg + '"></img></div>'+ renderBitScoopButton(specSwaggerJson) + '</div>';
-	retVal += '<div>' + specVersion + '</div><div class="item-desc">' + specDesc + '</div></div>';
+	retVal += '<div>Version: ' + specVersion + '</div><div class="item-desc">' + specDesc + '</div></div>';
 
 	return retVal;
 }

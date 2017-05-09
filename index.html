@@ -56,24 +56,25 @@
           <span class="subtitle">Github Resources</span>
         </div>
       </div>
-      <a href="https://github.com/bitscooplabs/provider-maps" class="link"><i class="fa fa-question-circle fa-2x"></i></a>
+      <a href="https://bitscoop.com/learn" class="link"><i class="fa fa-question-circle fa-2x"></i></a>
     </div>
   </div>
 
   <div class="tab_container">
     <input id="tab1" type="radio" name="tabs" checked>
-    <label for="tab1"><i class="fa fa-map-o"></i><span>Community API Maps</span></label>
+    <label for="tab1"><i class="fa fa-map-o"></i><span>Curated API Maps</span></label>
 
     <input id="tab2" type="radio" name="tabs">
     <label for="tab2"><i class="fa fa-search"></i><span>API Database</span></label>
 
     <input id="tab3" type="radio" name="tabs">
-    <label for="tab3"><i class="fa fa-code"></i><span>BitScoop SDKs</span></label>
+    <label for="tab3"><i class="fa fa-code"></i><span>SDKs & Testing</span></label>
 
     <input id="tab4" type="radio" name="tabs">
     <label for="tab4"><i class="fa fa-folder-open-o"></i><span>Starter Projects</span></label>
 
     <section id="content1" class="tab-content">
+      <p class="tab-info">Curated Maps are BitScoop API Maps created and maintained by the community. Use and modify as you wish and contribute to our Open Source GitHub repository.</p>
       <div class="controls">
         <div class="control white" data-filter="all">
           <span>All</span>
@@ -106,27 +107,102 @@
     </section>
 
     <section id="content2" class="tab-content">
+      <p class="tab-info">This is a database of Swagger 2.0 API Specifications the BitScoop Platform can use to generate API Maps.</p>
       <h3>Number of APIs in Database: <span id="api-count"></span> (Powered by <a href="https://apis.guru/browse-apis/" target="_blank">APIs.Guru</a>)</h3>
       <div id="database-list">Loading...</div>
     </section>
 
     <section id="content3" class="tab-content">
+      <p class="tab-info">Here is a list of official and generated SDKs and Tests that can be used to connect to the BitScoop Platform.</p>
       <div class="main-content">
-        <h3>Headline 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2>Offical BitScoop SDKs</h2>
+          <img class="sdk-logo" src="img/sdks/BitScoopNodeSDKIcon.svg" alt="BitScoop Node SDK"/>
+          <a href="https://github.com/bitscooplabs/bitscoop-nodejs-sdk" target="_blank"><h3>BitScoop JavaScript Node SDK</h3></a>
+          <div class="paragraph-box">
+            <p>This is the official node.js library for calling the BitScoop API.</p>
+            <p>Supports Node 6.0 and up.</p>
+            <p>Create sofware using any Node package or framework. Works with code as a service platforms like AWS Lambda, Azure Cloud Functions, IBM’s OpenWhisk, or Google Cloud Functions.</p>
+          </div>
+          <div class="div-break-small"></div>
+          <img class="sdk-logo" src="img/sdks/BitScoopPythonSDKIcon.svg" alt="BitScoop Python SDK"/>
+          <h3>Coming Soon: BitScoop Python SDK</h3>
+          <div class="paragraph-box">
+            <p>This is the official Python library for calling the BitScoop API.</p>
+            <p>Supports Python 2 and 3.</p>
+            <p>Code using any Python package. Works with code as a service platforms like AWS Lambda. Pairs well with Python data science libraries like Jupyter notebook, TensorFlow, Pandas, Numba, and Matplotlib.</p>
+          </div>
+          <div class="div-break"></div>
+        <h2>Generated Swagger SDKs</h2>
+        <div class="paragraph-box">
+          <p>You can generate an SDK in many languages for the BitScoop Platform using a variety of 3rd party services.</p>
+          <p>First download the Swagger specification files for the API Provider Maps you wish to use. Then import these Swagger specification files into the SDK generation tool of your choice.</p>
+        </div>
+          <img class="sdk-logo" src="img/logos/apimatic-logo.png" alt="APIMATIC DX Kits"/>
+          <a href="https://apimatic.io/" target="_blank"><h3>APIMATIC Platform SDKs</h3></a>
+            <img class="sdk-icons" style src="img/sdks/SDKAPIMaticIcons.svg" alt="APIMATIC DX Kits SDKs"/>
+            <p>C#, Python, Java, Node, PHP, Ruby, Android, iOS</p>
+            <div class="paragraph-box">
+              <p>APIMATIC is a premium service that can generate customizable SDKs from a variety of API description standards. APIMATIC also includes CI / CD Tools Integration, Git Deployment, Test Case Generation, and Generated Docs.</p>
+              <p>Use APIMATIC DX Kits to consolidate millions of API endpoints into simple SDKs with APIMATIC’s Code-Gen As A Service.</p>
+              <p>Need to import or export an API Description in a format other than Swagger 2.0? <a href="https://apimatic.io/transformer" target="_blank">Use APIMATIC Transformer</a>.</p>
+              <p>Supports API Blueprint Swagger (1.0 - 3.0, JSON/YAML), WADL, WSDL, Google Discovery, RAML 0.8 - 1.0, Mashery I/O Docs, HAR 1.2 Postman Collection 1.0 - 2.0 and Mashape</p>
+            </div>
+            <div class="div-break-small"></div>
+            <img class="sdk-logo" src="img/logos/swagger-logo.png" alt="Swagger Codegen"/>
+          <a href="http://swagger.io/swagger-codegen/" target="_blank"><h3>Swagger SDK Codegen</h3></a>
+            <img class="sdk-icons" src="img/sdks/SDKSwaggerCodegenIcons.svg" alt="Swagger Codegen SDKs"/>
+            <p>C#, C++, Python, Java, JavaScript, PHP, Ruby, Go, Android, iOS, Swift, Scala, Perl, BASH, and more.</p>
+            <div class="paragraph-box">
+              <p>Swagger Codegen is an Open Source project and <a href="https://generator.swagger.io" target="_blank">Public API</a> that can generate customizable SDKs from the Swagger 2.0 API description standard. Swagger Codegen also includes Test Case Generation and Generated Docs.</p>
+              <p>SDKs are generated through their API endpoint or using a command line utility. SDK Languages are supported through a variety of open source templates.</p>
+            </div>
+            <div class="div-break"></div>
+      <h2>Testing and Monitoring</h2>
+        <img class="demo-logo" src="img/demos/postman-logo.png" alt="Postman Testing and Monitoring"/>
+        <a href="https://www.getpostman.com/docs/" target="_blank"><h3>Test and Monitor using Postman</h3></a>
+        <div class="paragraph-box">
+          <p><a href="https://www.getpostman.com/docs/schedule_cloud_runs" target="_blank">Test and Monitor any API</a> through the BitScoop Platform or directly using Postman. Postman Collections are test cases for API endpoins and calls. The BitScoop Platform automatically generates Postman Collections for any API Map. Postman Monitors allow for scheduling Postman Collection Tests to run on an automated schedule with team alerts.</p>
+          <p><a href="https://www.getpostman.com/docs/code_snippets" target="_blank">Postman lets you generate snippets of code</a> in various languages and frameworks including cURL, Python, Java, JavaScript, PHP, Ruby, Go, Android, iOS, Swift, OCaml, Perl, BASH, and more.</p>
+        </div>
       </div>
     </section>
 
     <section id="content4" class="tab-content">
+      <p class="tab-info">Here is a list of Open Sorce Projects and Demos built by our team and the community.</p>
+      <p class="tab-info">Feel free to use these projects as starting places for creating software or data science projects on the BitScoop Platform.</p>
       <div class="main-content">
-        <h3>Headline 3</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2>BitScoop Example Projects</h2>
+          <img class="project-img" src="img/projects/Alexa.png" alt="Alexa Skill"/>
+          <a href="https://github.com/barankyle/bitscoop-alexa-demo" target="_blank"><h3>Alexa Skill: Ops Buddy</h3></a>
+          <div class="paragraph-box">
+            <p>Create amazing Amazon Alexa skills with ease using the BitScoop platform. Tie together APIs and Microservices to turbocharge Alexa.</p>
+            <p>This project uses the BitScoop Node JavaScript SDK, Amazon Web Services Lambda, and the Alexa Skills kit.</p>
+            <p>To learn more, <a href="https://blog.bitscoop.com/built-with-bitscoop-alexa-skills-35b12c4c9a46" target="_blank">check out our blog post</a>.</p>
+          </div>
+          <div class="div-break-small"></div>
+          <img class="project-img" src="img/projects/DataScience.png" alt="Alexa Skill"/>
+          <a href="https://github.com/barankyle/bitscoop-data-science-demo" target="_blank"><h3>Data Science Demo: Site Analytics</h3></a>
+          <div class="paragraph-box">
+            <p>Do data science with AWS Lambda, big data storage, visualization tools, and the BitScoop platform. Connect to more data with less effort.</p>
+            <p>This project uses the BitScoop Node JavaScript SDK, Amazon Web Services Lambda, RDS, and QuickSight.</p>
+            <p>To learn more, <a href="https://blog.bitscoop.com/built-with-bitscoop-data-science-platform-cab3a9855c22" target="_blank">check out our blog post</a>.</p>
+          </div>
+        <div class="div-break"></div>
+        <h2>BitScoop API Demos</h2>
+          <img class="demo-logo" src="img/demos/postman-logo.png" alt="Postman Demo"/>
+          <a href="https://documenter.getpostman.com/view/1284445/bitscoop-demo-1-api-toolbox-intro/2PPYwn" target="_blank"><h3>BitScoop Postman API Quickstart</h3></a>
+          <div class="paragraph-box">
+            <p>Quick 5 minute introduction to basic features.</p>
+            <p>This demo uses Postman, our favorite API Testing Suite.</p>
+          </div>
+          <div class="div-break-small"></div>
+          <img class="demo-logo" src="img/demos/ngrok-logo.png" alt="Ngrok Demo"/>
+          <a href="https://github.com/bitscooplabs/api-toolbox-intro" target="_blank"><h3>BitScoop Ngrok API Tutorial</h3></a>
+          <div class="paragraph-box">
+            <p>Dive into more powerful features and gain a deeper understand of how it works.</p>
+            <p>To run demo you need to set up local development environment using Ngrok, Node, and Postman.</p>
+            <p>Using Ngrok demonstrates the data flow as you are making calls.</p>
+          </div>
       </div>
     </section>
 

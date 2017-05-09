@@ -9,6 +9,7 @@ body {
 
 a {
   color: #2ac1de;
+  text-decoration: none;
 }
 
 /* Heder */
@@ -369,3 +370,53 @@ label .fa {
 
 /* Content
     ---------------------------------------------------------------------- */
+.tab-info {
+  text-align: center;
+  margin: 0.5em;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.sdk-logo {
+  width: 350px;
+  max-width: 100%;
+  margin: 1em 0;
+}
+
+.sdk-icons {
+  height: 65px;
+  max-width: 100%;
+}
+
+.project-img {
+  width: 500px;
+  max-width: 100%;
+}
+
+.demo-logo {
+  width: 250;
+  max-width: 100%;
+}
+
+.paragraph-box {
+  width: 500px;
+  max-width: 100%;
+}
+
+.div-break {
+  width: 50%;
+  margin: 2em 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.div-break-small {
+  width: 20%;
+  margin: 2em 0;
+  border-bottom: 1px solid #ccc;
+}
