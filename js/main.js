@@ -501,7 +501,7 @@ var rootDBUrl = 'https://api.apis.guru/v2/';
 var urlTemplate = '{swaggerJson}';
 
 function renderBitScoopButton(specSwaggerJson){
-	return	'<a target="_blank" href=https://bitscoop.com/maps/create?format=swagger2json&source=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
+	return	'<a target="_blank" href=https://bitscoop.com/maps/create?format=swagger2&source=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
 }
 
 function renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor) {
