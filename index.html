@@ -62,10 +62,10 @@
 
   <div class="tab_container">
     <input id="tab1" type="radio" name="tabs" checked>
-    <label for="tab1"><i class="fa fa-map-o"></i><span>Curated API Maps</span></label>
+    <label for="tab1"><i class="fa fa-search"></i><span>API Database</span></label>
 
     <input id="tab2" type="radio" name="tabs">
-    <label for="tab2"><i class="fa fa-search"></i><span>API Database</span></label>
+    <label for="tab2"><i class="fa fa-map-o"></i><span>Curated API Maps</span></label>
 
     <input id="tab3" type="radio" name="tabs">
     <label for="tab3"><i class="fa fa-code"></i><span>SDKs & Testing</span></label>
@@ -74,42 +74,79 @@
     <label for="tab4"><i class="fa fa-folder-open-o"></i><span>Starter Projects</span></label>
 
     <section id="content1" class="tab-content">
-      <p class="tab-info">Curated Maps are BitScoop API Maps created and maintained by the community. Use and modify as you wish and contribute to our Open Source GitHub repository.</p>
-      <div class="controls">
-        <div class="control white" data-filter="all">
-          <span>All</span>
+      <p class="tab-info">This is a database of Swagger 2.0 API Specifications the BitScoop Platform can use to generate API Maps.</p>
+      <h3>Number of APIs in Database: <span id="api-count"></span> (Powered by <a href="https://apis.guru/browse-apis/" target="_blank">APIs.Guru</a>)</h3>
+
+      <form class="search">
+        <div>
+          <input type="text" placeholder="Search names" />
         </div>
-        <div class="control blue" data-toggle=".development">
-          <span>Development</span>
-        </div>
-        <div class="control red" data-toggle=".productivity">
-          <span>Productivity</span>
-        </div>
-        <div class="control green" data-toggle=".social">
-          <span>Social</span>
-        </div>
-        <div class="control purple" data-toggle=".datasets">
-          <span>Datasets</span>
-        </div>
-        <div class="control orange" data-toggle=".utilites">
-          <span>Utilites</span>
-        </div>
-        <div class="control pink" data-toggle=".entertainment">
-          <span>Entertainment</span>
-        </div>
-        <div class="control yellow" data-toggle=".other">
-          <span>Other</span>
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="mobile-selector">
+        <span class="placeholder-text">All</span>
+        <i class="fa fa-caret-down"></i>
+      </div>
+
+      <div class="filters">
+        <div class="scroller">
+          <div class="controls database">
+            <div class="control white" data-filter="all">
+              <span>All</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div id="map-container">
-      </div>
+      <div class="container" id="database-container">Loading...</div>
     </section>
 
     <section id="content2" class="tab-content">
-      <p class="tab-info">This is a database of Swagger 2.0 API Specifications the BitScoop Platform can use to generate API Maps.</p>
-      <h3>Number of APIs in Database: <span id="api-count"></span> (Powered by <a href="https://apis.guru/browse-apis/" target="_blank">APIs.Guru</a>)</h3>
-      <div id="database-list">Loading...</div>
+      <p class="tab-info">Curated Maps are BitScoop API Maps created and maintained by the community. Use and modify as you wish and contribute to our Open Source GitHub repository.</p>
+
+      <form class="search">
+        <input type="text" placeholder="Search names" />
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="mobile-selector">
+        <span class="placeholder-text">All</span>
+        <i class="fa fa-caret-down"></i>
+      </div>
+
+      <div class="filters">
+        <div class="scroller">
+          <div class="controls maps">
+            <div class="control white" data-filter="all">
+              <span>All</span>
+            </div>
+              <div class="control blue" data-toggle=".development">
+                  <span>Development</span>
+              </div>
+              <div class="control red" data-toggle=".productivity">
+                  <span>Productivity</span>
+              </div>
+              <div class="control green" data-toggle=".social">
+                  <span>Social</span>
+              </div>
+              <div class="control purple" data-toggle=".datasets">
+                  <span>Datasets</span>
+              </div>
+              <div class="control orange" data-toggle=".utilites">
+                  <span>Utilites</span>
+              </div>
+              <div class="control pink" data-toggle=".entertainment">
+                  <span>Entertainment</span>
+              </div>
+              <div class="control yellow" data-toggle=".other">
+                  <span>Other</span>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="map-container"></div>
     </section>
 
     <section id="content3" class="tab-content">
@@ -139,7 +176,7 @@
         </div>
           <img class="sdk-logo" src="img/logos/apimatic-logo.png" alt="APIMATIC DX Kits"/>
           <a href="https://apimatic.io/" target="_blank"><h3>APIMATIC Platform SDKs</h3></a>
-            <img class="sdk-icons" style src="img/sdks/SDKAPIMaticIcons.svg" alt="APIMATIC DX Kits SDKs"/>
+            <img class="sdk-icons" src="img/sdks/SDKAPIMaticIcons.svg" alt="APIMATIC DX Kits SDKs"/>
             <p>C#, Python, Java, Node, PHP, Ruby, Android, iOS</p>
             <div class="paragraph-box">
               <p>APIMATIC is a premium service that can generate customizable SDKs from a variety of API description standards. APIMATIC also includes CI / CD Tools Integration, Git Deployment, Test Case Generation, and Generated Docs.</p>

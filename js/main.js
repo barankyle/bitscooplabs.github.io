@@ -477,65 +477,200 @@ providerList.forEach(function(element) {
 		"</span></div></div>")
 });
 
-$(".mix").click(
-	function() {
-		window.location = $(this).attr("data-link");
-	});
+$("#map-container .mix").click(function() {
+	window.location = $(this).attr("data-link");
+});
 
-	var mixer = mixitup($container, {
-		"animation": {
-			"duration": 250,
-			"nudge": true,
-			"effects": "fade scale(0.68)"
-		},
+var mapMixer = mixitup($container, {
+	"animation": {
+		"duration": 250,
+		"nudge": true,
+		"effects": "fade scale(0.68)"
+	},
 	callbacks: {
 			onMixClick: function(state, originalEvent) {
-					 mixer.filter($(originalEvent.target).data("toggle"));
+					 mapMixer.filter($(originalEvent.target).data("toggle"));
 			}
 	}
-	});
+});
 
 // API DATABASE
 
 var rootDBUrl = 'https://api.apis.guru/v2/';
 var urlTemplate = '{swaggerJson}';
 
+function versionCompare(v1, v2, options) {
+	var lexicographical = options && options.lexicographical,
+		zeroExtend = options && options.zeroExtend,
+		v1parts = v1.split('.'),
+		v2parts = v2.split('.');
+
+	function isValidPart(x) {
+		return (lexicographical ? /^\d+[A-Za-z]*$/ : /^\d+$/).test(x);
+	}
+
+	if (!v1parts.every(isValidPart) || !v2parts.every(isValidPart)) {
+		return NaN;
+	}
+
+	if (zeroExtend) {
+		while (v1parts.length < v2parts.length) v1parts.push("0");
+		while (v2parts.length < v1parts.length) v2parts.push("0");
+	}
+
+	if (!lexicographical) {
+		v1parts = v1parts.map(Number);
+		v2parts = v2parts.map(Number);
+	}
+
+	for (var i = 0; i < v1parts.length; ++i) {
+		if (v2parts.length === i) {
+			return 1;
+		}
+
+		if (v1parts[i] === v2parts[i]) {
+			continue;
+		}
+		else if (v1parts[i] > v2parts[i]) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+
+	if (v1parts.length !== v2parts.length) {
+		return -1;
+	}
+
+	return 0;
+}
+
+function flipIcon() {
+	if ($('body').hasClass('ctl-expand')) {
+		$('.mobile-selector i').removeClass('fa-caret-down').addClass('fa-caret-up');
+	}
+	else {
+		$('.mobile-selector i').removeClass('fa-caret-up').addClass('fa-caret-down');
+	}
+}
+
 function renderBitScoopButton(specSwaggerJson){
 	return	'<a target="_blank" href=https://bitscoop.com/maps/create?format=swagger2&source=' + specSwaggerJson + '><img src=https://d233zlhvpze22y.cloudfront.net/github/AddBitScoopXSmall.png style=”max-width:100%;”></a>';
 }
 
-function renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor) {
-	var retVal = '<div class="db-item"><div class="item-name">'+ specName +'</div><div class="whitebox"><div class="logo-container" style="background-color:' + specImgBackgroundColor +'"><img class="db-logo" src="' + specImg + '"></img></div>'+ renderBitScoopButton(specSwaggerJson) + '</div>';
+function renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor, specCategories) {
+	var retVal = '<div class="mix db-item ' + specCategories.join(' ') + '"><div class="item-name">'+ specName +'</div><div class="whitebox"><div class="logo-container" style="background-color:' + specImgBackgroundColor +'"><img class="db-logo" src="' + specImg + '"></img></div>'+ renderBitScoopButton(specSwaggerJson) + '</div>';
 	retVal += '<div>Version: ' + specVersion + '</div><div class="item-desc">' + specDesc + '</div></div>';
 
 	return retVal;
 }
 
+function capitalize(str) {
+	return str[0].toUpperCase() + str.slice(1);
+}
+
+function search($this) {
+	var state, val, $container, $filtered;
+
+	val = $this.find('input[type="text"]').val();
+	$container = $this.siblings('.container');
+
+	state = $container.mixItUp('getState');
+	$filtered = state.targets.filter(function(element, index){
+		return $(element).children('.item-name').text().toString().toLowerCase().indexOf(val.trim()) >= 0 || $(element).find('.content span').text().toString().toLowerCase().indexOf(val.trim()) >= 0;
+	});
+
+	if (val.length > 0) {
+		$container.mixItUp('filter', $filtered);
+	}
+	else {
+		$this.siblings('.filters').find('.control[data-filter="all"]').trigger('click');
+	}
+}
+
+
+$(document).on('click', '.mobile-selector', function() {
+	$('body').toggleClass('ctl-expand');
+	flipIcon();
+});
+
+$(document).on('click', '.control', function() {
+	var $this = $(this);
+
+	$('body').removeClass('ctl-expand');
+	$('.mobile-selector').children('.placeholder-text').text($this.text());
+
+	flipIcon();
+});
+
+$(document).on('submit', '.search', function(e) {
+	e.preventDefault();
+
+	$('body').removeClass('ctl-expand');
+	flipIcon();
+	$('.mobile-selector').children('.placeholder-text').text('Text Search');
+	$('.control').removeClass('mixitup-control-active');
+	$('.control[data-filter="all"]').addClass('mixitup-control-active');
+
+	search($(this));
+});
+
 $.get(rootDBUrl + 'list.json', function(data){
-	var specName, specSwaggerJson, specDesc, specImg, specVersion;
 	var renderedList = '';
 	var count = 0;
-	var apiVersion;
+	var categories = [];
 
 	for(var apiId in data){
-		for (var version in data[apiId].versions) {
+		let apiVersion, specCategories, specDesc, specImg, specImgBackgroundColor, specName, specSwaggerJson, specVersion;
 
+		for (var version in data[apiId].versions) {
 			apiVersion = data[apiId].versions[version];
 
-			specName = apiVersion.info.title;
-			specSwaggerJson = apiVersion.swaggerUrl;
-			specDesc = apiVersion.info.description || 'No description';
-			specVersion = apiVersion.info.version || '';
+			if (specVersion == null || versionCompare(apiVersion.info.version, specVersion) === 1) {
+				specName = apiVersion.info.title;
+				specSwaggerJson = apiVersion.swaggerUrl;
+				specDesc = apiVersion.info.description || 'No description';
+				specVersion = apiVersion.info.version || '';
+				specCategories = apiVersion.info['x-apisguru-categories'] || [];
 
-			if (apiVersion.info['x-logo']) {
-				specImg = apiVersion.info['x-logo'].url;
-				specImgBackgroundColor = apiVersion.info['x-logo'].backgroundColor;
+				for (var i = 0; i < specCategories.length; i++) {
+					var category = specCategories[i];
+
+					if (categories.indexOf(category) < 0) {
+						categories.push(category);
+
+						$('#content1 .controls.database').append('<div class="control" data-toggle=".' + category + '"><span>' + capitalize(category).replace('_', ' ') + '</span></div>');
+					}
+				}
+
+				if (apiVersion.info['x-logo']) {
+					specImg = apiVersion.info['x-logo'].url;
+					specImgBackgroundColor = apiVersion.info['x-logo'].backgroundColor;
+				}
 			}
-
-			renderedList += renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor);
-			count++;
 		}
+
+		renderedList += renderItem(specName, specSwaggerJson, specVersion, specDesc, specImg, specImgBackgroundColor, specCategories);
+		count++;
 	}
-	$('#database-list').html(renderedList);
+
+	$('#database-container').html(renderedList);
 	$('#api-count').html(count);
+
+	var $databaseContainer = $('#database-container');
+
+	var databaseMixer = mixitup($databaseContainer, {
+		"animation": {
+			"duration": 250,
+			"nudge": true,
+			"effects": "fade scale(0.68)"
+		},
+		callbacks: {
+			onMixClick: function(state, originalEvent) {
+				databaseMixer.filter($(originalEvent.target).data("toggle"));
+			}
+		}
+	});
+
 });
